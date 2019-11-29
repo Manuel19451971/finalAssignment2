@@ -125,7 +125,7 @@ using PlayersProfile.Models;
             WriteLiteral("\r\n        </dd>\r\n    </dl>\r\n</div>\r\n<div>\r\n    ");
             EndContext();
             BeginContext(771, 60, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c26351d2235d4ae78ea8f0c77232e74e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b1ca4b696584447286c7a051f5d8d50f", async() => {
                 BeginContext(823, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -160,7 +160,7 @@ using PlayersProfile.Models;
             WriteLiteral(" |\r\n    ");
             EndContext();
             BeginContext(839, 38, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "55e95da89bdd4459a80adb0ea2bb01b5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "41548bb2f38b443184b1c588671c7f5f", async() => {
                 BeginContext(861, 12, true);
                 WriteLiteral("Back to List");
                 EndContext();
