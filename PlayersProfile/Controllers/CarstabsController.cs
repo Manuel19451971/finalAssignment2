@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,8 @@ using PlayersProfile.Models;
 
 namespace PlayersProfile.Controllers
 {
+
+    
     public class CarstabsController : Controller
     {
         private readonly playersdb1Context _context;
@@ -19,6 +22,7 @@ namespace PlayersProfile.Controllers
         }
 
         // GET: Carstabs
+        
         public async Task<IActionResult> Index()
         {
             var playersdb1Context = _context.Carstab.Include(c => c.Player);
@@ -26,6 +30,7 @@ namespace PlayersProfile.Controllers
         }
 
         // GET: Carstabs/Details/5
+        
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,10 +50,20 @@ namespace PlayersProfile.Controllers
         }
 
         // GET: Carstabs/Create
+        //[Authorize]
         public IActionResult Create()
         {
-            ViewData["PlayerId"] = new SelectList(_context.Playerstab, "PlayerId", "PlayerId");
-            return View();
+
+            if (User.Identity.IsAuthenticated)
+            {
+
+                ViewData["PlayerId"] = new SelectList(_context.Playerstab, "PlayerId", "PlayerId");
+                return View();
+
+            }
+
+            else { return Redirect("~/Identity/Account/Login"); }
+
         }
 
         // POST: Carstabs/Create
@@ -56,6 +71,7 @@ namespace PlayersProfile.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> Create([Bind("CarId,Cost,Brand,Year,PlayerId")] Carstab carstab)
         {
             if (ModelState.IsValid)
@@ -69,20 +85,29 @@ namespace PlayersProfile.Controllers
         }
 
         // GET: Carstabs/Edit/5
+        
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
+
+            if (User.Identity.IsAuthenticated)
             {
-                return NotFound();
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                var carstab = await _context.Carstab.FindAsync(id);
+                if (carstab == null)
+                {
+                    return NotFound();
+                }
+                ViewData["PlayerId"] = new SelectList(_context.Playerstab, "PlayerId", "PlayerId", carstab.PlayerId);
+                return View(carstab);
             }
 
-            var carstab = await _context.Carstab.FindAsync(id);
-            if (carstab == null)
-            {
-                return NotFound();
-            }
-            ViewData["PlayerId"] = new SelectList(_context.Playerstab, "PlayerId", "PlayerId", carstab.PlayerId);
-            return View(carstab);
+            else { return Redirect("~/Identity/Account/Login"); }
+
+
         }
 
         // POST: Carstabs/Edit/5
@@ -90,6 +115,7 @@ namespace PlayersProfile.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> Edit(int id, [Bind("CarId,Cost,Brand,Year,PlayerId")] Carstab carstab)
         {
             if (id != carstab.CarId)
@@ -122,22 +148,33 @@ namespace PlayersProfile.Controllers
         }
 
         // GET: Carstabs/Delete/5
+
+         
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
+
+            if (User.Identity.IsAuthenticated)
             {
-                return NotFound();
+
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                var carstab = await _context.Carstab
+                    .Include(c => c.Player)
+                    .FirstOrDefaultAsync(m => m.CarId == id);
+                if (carstab == null)
+                {
+                    return NotFound();
+                }
+
+                return View(carstab);
+
             }
 
-            var carstab = await _context.Carstab
-                .Include(c => c.Player)
-                .FirstOrDefaultAsync(m => m.CarId == id);
-            if (carstab == null)
-            {
-                return NotFound();
-            }
+            else { return Redirect("~/Identity/Account/Login"); }
 
-            return View(carstab);
         }
 
         // POST: Carstabs/Delete/5

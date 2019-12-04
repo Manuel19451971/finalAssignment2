@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PlayersProfile.Models;
 
 namespace PlayersProfile.Controllers
-{
+{ 
+   
     public class PlayerstabsController : Controller
     {
         private readonly playersdb1Context _context;
@@ -19,6 +21,7 @@ namespace PlayersProfile.Controllers
         }
 
         // GET: Playerstabs
+       
         public async Task<IActionResult> Index()
         {
             return View(await _context.Playerstab.ToListAsync());
@@ -45,7 +48,12 @@ namespace PlayersProfile.Controllers
         // GET: Playerstabs/Create
         public IActionResult Create()
         {
-            return View();
+
+            if (User.Identity.IsAuthenticated)
+            {
+                return View();
+            }
+            else { return Redirect("~/Identity/Account/Login"); }
         }
 
         // POST: Playerstabs/Create
@@ -67,17 +75,24 @@ namespace PlayersProfile.Controllers
         // GET: Playerstabs/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
+            if (User.Identity.IsAuthenticated)
             {
-                return NotFound();
-            }
 
-            var playerstab = await _context.Playerstab.FindAsync(id);
-            if (playerstab == null)
-            {
-                return NotFound();
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                var playerstab = await _context.Playerstab.FindAsync(id);
+                if (playerstab == null)
+                {
+                    return NotFound();
+                }
+                return View(playerstab);
+
             }
-            return View(playerstab);
+            else { return Redirect("~/Identity/Account/Login"); }
+
         }
 
         // POST: Playerstabs/Edit/5
@@ -118,19 +133,28 @@ namespace PlayersProfile.Controllers
         // GET: Playerstabs/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
+
+            if (User.Identity.IsAuthenticated)
             {
-                return NotFound();
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                var playerstab = await _context.Playerstab
+                    .FirstOrDefaultAsync(m => m.PlayerId == id);
+                if (playerstab == null)
+                {
+                    return NotFound();
+                }
+
+                return View(playerstab);
+
             }
 
-            var playerstab = await _context.Playerstab
-                .FirstOrDefaultAsync(m => m.PlayerId == id);
-            if (playerstab == null)
-            {
-                return NotFound();
-            }
+            else { return Redirect("~/Identity/Account/Login"); }
 
-            return View(playerstab);
+
         }
 
         // POST: Playerstabs/Delete/5

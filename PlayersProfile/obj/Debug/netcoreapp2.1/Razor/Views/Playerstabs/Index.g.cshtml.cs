@@ -67,7 +67,7 @@ using PlayersProfile.Models;
             WriteLiteral("\r\n<h2>Player Database</h2>\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(183, 41, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4f1cefe4eeae46d5915158c6541fbb63", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1ade0642786e4a36a77a37cf5d6eb2f1", async() => {
                 BeginContext(206, 14, true);
                 WriteLiteral("Create Profile");
                 EndContext();
@@ -157,7 +157,7 @@ using PlayersProfile.Models;
             WriteLiteral("\r\n            </td>\r\n            <td>\r\n                ");
             EndContext();
             BeginContext(1086, 59, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b1e1e46e3f204a7fa423ba541c0537b6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3a1767ec2aed45ccb240fffa789151ff", async() => {
                 BeginContext(1137, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -192,7 +192,7 @@ using PlayersProfile.Models;
             WriteLiteral(" |\r\n                ");
             EndContext();
             BeginContext(1165, 65, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d1469abe63a74d5c89d642e6b3820dfb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1a03903d95f946a3b2e730efd531bb6a", async() => {
                 BeginContext(1219, 7, true);
                 WriteLiteral("Details");
                 EndContext();
@@ -227,7 +227,7 @@ using PlayersProfile.Models;
             WriteLiteral(" |\r\n                ");
             EndContext();
             BeginContext(1250, 63, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "73680476ba2b440fb93860ea44ce0929", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "78c4ee72e3b74dcea339bc0eef5a92cf", async() => {
                 BeginContext(1303, 6, true);
                 WriteLiteral("Delete");
                 EndContext();
