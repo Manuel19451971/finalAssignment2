@@ -21,9 +21,7 @@ namespace PlayersProfile.Controllers
             _context = context;
         }
 
-        public CarstabsController()
-        {
-        }
+        
 
         // GET: Carstabs
 
