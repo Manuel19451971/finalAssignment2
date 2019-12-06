@@ -28,6 +28,10 @@ namespace PlayersProfile.Models
             }
         }
 
+
+
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
