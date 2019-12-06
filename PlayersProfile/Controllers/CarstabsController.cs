@@ -21,8 +21,12 @@ namespace PlayersProfile.Controllers
             _context = context;
         }
 
+        public CarstabsController()
+        {
+        }
+
         // GET: Carstabs
-        
+
         public async Task<IActionResult> Index()
         {
             var playersdb1Context = _context.Carstab.Include(c => c.Player);

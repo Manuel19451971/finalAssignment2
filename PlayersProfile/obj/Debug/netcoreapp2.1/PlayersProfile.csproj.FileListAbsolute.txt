@@ -47,3 +47,4 @@ C:\Users\manue\source\repos\PlayersProfile\PlayersProfile\obj\Debug\netcoreapp2.
 C:\Users\manue\source\repos\PlayersProfile\PlayersProfile\obj\Debug\netcoreapp2.1\PlayersProfile.dll
 C:\Users\manue\source\repos\PlayersProfile\PlayersProfile\obj\Debug\netcoreapp2.1\PlayersProfile.pdb
 C:\Users\manue\source\repos\PlayersProfile\PlayersProfile\obj\Debug\netcoreapp2.1\PlayersProfile.csproj.CopyComplete
+C:\Users\manue\source\repos\PlayersProfile\PlayersProfile\obj\Debug\netcoreapp2.1\PlayersProfile.csprojAssemblyReference.cache
